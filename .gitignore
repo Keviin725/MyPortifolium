@@ -1,2 +1,4 @@
 # PHPStorm
 .idea
+.env
+node_modules

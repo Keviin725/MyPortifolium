@@ -1049,4 +1049,28 @@ ul li::before {
     opacity: 1;
   }
 }
+.software-detail {
+  font-size: 30px;
+  color: #ffffff;
+  position: relative;
+  animation: moveUpDown 2s ease-in-out infinite alternate;
+}
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+.flex-container {
+  display: flex;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -57,14 +57,21 @@ export default {
   background-color: #000;
   color: #fff;
   transition: all 0.3s ease;
+  position: relative; /* Necessário para o efeito de sombra */
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3), /* Brilho interno */
+              0 0 10px rgba(0, 255, 255, 0.5), /* Brilho médio */
+              0 0 20px rgba(0, 255, 255, 0.2), /* Brilho externo */
+              0 0 40px rgba(0, 255, 255, 0.2); /* Brilho distante */
 }
 
 .connect-btn:hover, .connect-btn:focus {
-  
-  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada para efeito de hover */
-  transform: translate(-1px, -1px); /* Movimenta ligeiramente o botão para dar um efeito de pressionado */
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.75),
+              0 0 10px rgba(0, 255, 255, 0.75),
+              0 0 20px rgba(0, 255, 255, 0.75),
+              0 0 40px rgba(0, 255, 255, 0.75),
+              0 0 80px rgba(0, 255, 255, 0.75); /* Brilho mais intenso para o efeito de hover/focus */
+  transform: translate(-1px, -1px); /* Mantém o efeito de movimento */
 }
-
 .footer-content {
   display: flex;
   justify-content: space-between;

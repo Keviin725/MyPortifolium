@@ -105,12 +105,12 @@ export default {
 
 .intro-image {
   flex-basis: 300px; /* Tamanho base fixo para a imagem */
-  height: 50%; /* Para manter a proporção da imagem */
+  height: auto; /* Para manter a proporção da imagem */
   display: block; /* Garante que a div é exibida */
 }
 
 .intro-image .intro-img-effect {
-  width: 80%; /* Faz a imagem preencher a div .intro-image */
+  width: 100%; /* Faz a imagem preencher a div .intro-image */
   height: auto; /* Mantém a proporção da imagem */
   transition: transform 0.3s ease;
 }
@@ -160,12 +160,19 @@ export default {
   color: #fff;
   transition: all 0.3s ease;
   margin: 5px;
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3), /* Brilho interno */
+              0 0 10px rgba(0, 255, 255, 0.5), /* Brilho médio */
+              0 0 20px rgba(0, 255, 255, 0.2), /* Brilho externo */
+              0 0 40px rgba(0, 255, 255, 0.2); /* Brilho distante */
 }
 
 .connect-btn:hover, .connect-btn:focus {
-
-  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada para efeito de hover */
-  transform: translate(-1px, -1px); /* Movimenta ligeiramente o botão para dar um efeito de pressionado */
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.75),
+              0 0 10px rgba(0, 255, 255, 0.75),
+              0 0 20px rgba(0, 255, 255, 0.75),
+              0 0 40px rgba(0, 255, 255, 0.75),
+              0 0 80px rgba(0, 255, 255, 0.75); /* Brilho mais intenso para o efeito de hover/focus */
+  transform: translate(-1px, -1px); /* Mantém o efeito de movimento */
 }
 
 .works-section {

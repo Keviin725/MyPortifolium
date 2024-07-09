@@ -1,13 +1,13 @@
 <template>
   <div class="tree-item">
-    <div class="item-content" @click="toggleChildren" :class="{ 'has-children': item.children && item.children.length > 0 }">
+    <div class="item-content" @click="handleItemClick" :class="{ 'has-children': item.children && item.children.length > 0 }">
       <img :src="getIconPath(item.icon)" :style="{ color: item.color }" class="item-icon" />
       <span>{{ item.name }}</span>
       <q-icon name="keyboard_arrow_down" v-if="item.children && item.children.length > 0 && showChildren" />
       <q-icon name="keyboard_arrow_right" v-else-if="item.children && item.children.length > 0 && !showChildren" />
     </div>
     <div v-if="showChildren && item.children && item.children.length > 0" class="children">
-      <TreeItem v-for="(child, index) in item.children" :key="index" :item="child" />
+      <TreeItem v-for="(child, index) in item.children" :key="index" :item="child" @item-click="handleChildClick(child)" />
     </div>
   </div>
 </template>
@@ -26,8 +26,16 @@ export default {
     };
   },
   methods: {
-    toggleChildren() {
-      this.showChildren = !this.showChildren;
+    handleItemClick() {
+      if (this.item.children && this.item.children.length > 0) {
+        this.showChildren = !this.showChildren;
+      } else {
+        // Se não tiver children, emitir o evento item-click com o próprio item
+        this.$emit('item-click', this.item);
+      }
+    },
+    handleChildClick(child) {
+      this.$emit('item-click', child);
     },
     getIconPath(icon) {
       // Determina o caminho base para os ícones

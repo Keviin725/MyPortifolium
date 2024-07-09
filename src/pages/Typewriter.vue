@@ -1,7 +1,7 @@
 <template>
   <div class="typewriter">
-    <h1  v-html="headerText"></h1>
-    <h4 class="text-h6" v-html="paragraphText"></h4>
+    <h1 v-html="headerText"></h1>
+    <p class="text-h6" v-html="paragraphText"></p>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
     return {
       headerText: '',
       paragraphText: '',
-      header: ' Passionate Fullstack Developer & Ethical Hacking Enthusiast',
+      header: ' Software Engineer & Ethical Hacking Enthusiast',
       paragraph: 'My name is Kevin, I am from Maputo and I am attending the 4th year of Computer and Telecommunications Engineering at ISUTC. I am a young person passionate about software development, with tendencies in the areas of artificial intelligence and web security.',
     };
   },
@@ -50,4 +50,6 @@ export default {
   from, to { color: transparent; }
   50% { color: orange; }
 }
+
+
 </style>

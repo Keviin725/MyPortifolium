@@ -5,58 +5,42 @@
       <q-btn flat dense round icon="close" @click="drawer = false" />
     </q-toolbar>
     <q-scroll-area class="fit">
-      <q-list>
-        <q-item clickable v-ripple v-for="(item, index) in items" :key="index">
-          <q-item-section avatar>
-            <q-icon :name="item.icon" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>{{ item.label }}</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
+      <TreeItem v-for="(item, index) in sampleTree" :key="index" :item="item" />
     </q-scroll-area>
   </div>
 </template>
 
 <script>
+import TreeItem from '../components/TreeItem.vue';
+import { sampleTree } from '../data/TreeData';
+
 export default {
   props: {
     value: Boolean,
-    title: String,
-    items: {
-      type: Array,
-      required: true
-    }
+    title: String
   },
   emits: ['update:drawer'],
   data() {
     return {
-      drawer: this.value
-    }
+      drawer: this.value,
+      sampleTree: sampleTree // Utiliza os dados importados
+    };
   },
   watch: {
     value(val) {
-      this.drawer = val
+      this.drawer = val;
     },
     drawer(val) {
-      this.$emit('update:drawer', val)
+      this.$emit('update:drawer', val);
     }
+  },
+  components: {
+    TreeItem
   }
-}
+};
 </script>
 
 <style scoped>
-.item-drawer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100vh;
-  background-color: #1e1e3f;
-  z-index: 1000;
-  color: #b6b2b2;
-}
 .q-scroll-area {
   background-color: #2a2139;
 }
@@ -64,7 +48,6 @@ export default {
   background-color: #1e1e3f;
   color: #b6b2b2;
 }
-
 .q-item {
   color: #b6b2b2;
   background-color: #1e1e3f;

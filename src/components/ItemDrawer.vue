@@ -5,7 +5,16 @@
       <q-btn flat dense round icon="close" @click="drawer = false" />
     </q-toolbar>
     <q-scroll-area class="fit">
-      <slot></slot>
+      <q-list>
+        <q-item clickable v-ripple v-for="(item, index) in items" :key="index">
+          <q-item-section avatar>
+            <q-icon :name="item.icon" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>{{ item.label }}</q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-list>
     </q-scroll-area>
   </div>
 </template>
@@ -14,7 +23,11 @@
 export default {
   props: {
     value: Boolean,
-    title: String
+    title: String,
+    items: {
+      type: Array,
+      required: true
+    }
   },
   emits: ['update:drawer'],
   data() {
@@ -33,14 +46,30 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .item-drawer {
   position: fixed;
-  top: 30px;
-  left: 50px;
+  top: 0;
+  right: 0;
   width: 300px;
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #1e1e3f;
   z-index: 1000;
+  color: #b6b2b2;
+}
+.q-scroll-area {
+  background-color: #2a2139;
+}
+.q-toolbar {
+  background-color: #1e1e3f;
+  color: #b6b2b2;
+}
+
+.q-item {
+  color: #b6b2b2;
+  background-color: #1e1e3f;
+}
+.q-item:hover {
+  background-color: #333;
 }
 </style>

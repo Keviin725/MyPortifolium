@@ -5,7 +5,7 @@
       <q-bar class="header-bar">
         <q-icon>
           <q-img src="/vs-code.svg" />
-        </q-icon>
+      </q-icon>
         <div class="cursor-pointer non-selectable">
           Arquivo
           <q-menu>
@@ -181,6 +181,13 @@
               </q-icon>
             </q-item-section>
           </q-item>
+          <q-item class="item-with-margin" clickable v-ripple @click="handleItemClick(3)">
+            <q-item-section avatar class="q-pa-sm item-section">
+              <q-icon  size="30px" >
+                <q-img src="/settings-gear.svg" />
+              </q-icon>
+            </q-item-section>
+          </q-item>
         </q-list>
       </div>
 
@@ -206,37 +213,24 @@
     <!-- Status Bar -->
     <q-footer class="status-bar">
       <q-bar>
+        <div class="cursor-pointer non-selectable f">
+          <q-icon size="16px"><q-img src="/remote.svg"/></q-icon>
+        </div>
         <div class="cursor-pointer non-selectable">
           <q-icon size="16px"><q-img src="/git-merge.svg"/></q-icon>
-          main
-          <q-icon size="16px"><q-img src="/refresh.svg"/></q-icon>
+        </div>
+        <div class="cursor-pointer non-selectable">
+          <span style="font-size: 12px; font-weight: bold">main*</span>
         </div>
 
-        <div class="q-ml-md cursor-pointer non-selectable">
-          Edit
-          <q-menu auto-close>
-            <q-list dense style="min-width: 100px">
-              <q-item clickable>
-                <q-item-section>Cut</q-item-section>
-              </q-item>
-              <q-item clickable>
-                <q-item-section>Copy</q-item-section>
-              </q-item>
-              <q-item clickable>
-                <q-item-section>Paste</q-item-section>
-              </q-item>
-              <q-separator />
-              <q-item clickable>
-                <q-item-section>Select All</q-item-section>
-              </q-item>
-            </q-list>
-          </q-menu>
+        <div class="cursor-pointer non-selectable">
+          <q-icon size="16px"><q-img src="/sync.svg"/></q-icon>
         </div>
+
 
         <q-space />
 
-        <q-btn dense flat icon="crop_square" />
-        <q-btn dense flat icon="close" />
+
         <q-icon size="16px"><q-img src="/bell-dot.svg"/></q-icon>
       </q-bar>
     </q-footer>
@@ -289,11 +283,11 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 50px;
-
+  position: fixed;
   left: 0;
-  top: 30px;
+  top: 20px;
   bottom: 0;
-
+  overflow-x: hidden;
   background-color: #0a0a14;
 }
 
@@ -302,15 +296,23 @@ export default {
   margin-left: 50px; /* Ajusta para não sobrepor a barra lateral */
   padding: 20px; /* Ajusta conforme necessário */
 }
-
+.item-with-margin {
+  margin-top: calc(250px - 30px); /* Ajuste conforme necessário para garantir visibilidade */
+}
 .item-drawer-container {
   position: fixed;
   top: 30px;
   right: 20px;
   width: 300px;
   background-color: #1e1e3f;
-  z-index: 1000;
-  color: #c3f9ff;
+
+}
+.q-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* Certifique-se de que o footer não sobreponha o conteúdo importante */
 }
 
 .status-bar {
@@ -319,31 +321,48 @@ export default {
   left: 0;
   width: 100%;
   background-color: #1e1e3f;
-  color: #c3f9ff;
+  color: #b6b2b2;
+}
+.q-bar--standard {
+  padding: 0;
+  height: 24px;
 }
 
 .header-bar {
   background-color: #1e1e3f;
-  color: #c3f9ff;
+  color: #b6b2b2;
 }
 
 .q-menu .q-item {
-  color: #c3f9ff;
+  color: #b6b2b2;
+  background-color: #1e1e3f;
 }
 
 /* ItemDrawer Styles */
 .item-drawer {
   position: fixed;
-  top: 30px;
+  top: 20px;
   left: 50px;
   width: 300px;
   height: 100vh;
   background-color: #1e1e3f;
   z-index: 1000;
-  color: #c3f9ff;
+  color: #b6b2b2;
 }
 
 .item-drawer .q-scroll-area {
   background-color: #2a2139;
+}
+.f {
+  background-color: rgb(233, 104, 104); /* Define a cor de fundo como vermelha */
+  display: inline-flex; /* Usa flex para centralizar o ícone */
+  align-items: center; /* Centraliza verticalmente o ícone */
+  justify-content: center; /* Centraliza horizontalmente o ícone */
+  width: 40px; /* Largura do retângulo */
+  height: 24px; /* Altura do retângulo */
+
+}
+.cursor-pointer.non-selectable {
+  font-size: 14px;
 }
 </style>

@@ -29,7 +29,7 @@
       <hr>
     </div>
 
-    <div class="works-section">
+    <!---<div class="works-section">
       <h2>Recent works</h2>
       <div class="filter-buttons">
         <q-btn label="All" class="connect-btn" />
@@ -58,7 +58,7 @@
           </q-card-section>
         </q-card>
       </div>
-    </div>
+    </div>-->
   </q-page>
 </template>
 

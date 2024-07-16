@@ -1,6 +1,6 @@
 <template>
   <div class="typewriter">
-    <h1 v-html="headerText"></h1>
+    <h2 v-html="headerText"></h2>
     <p class="text-h6" v-html="paragraphText"></p>
   </div>
 </template>
@@ -11,10 +11,11 @@ export default {
     return {
       headerText: '',
       paragraphText: '',
-     header: 'Passionate Software Engineer & Web Security',
+      header: 'Software Engineer & Web Security Enthusiast',
       paragraph: 'My name is Kevin, I am from Maputo and I am attending the 4th year of Computer and Telecommunications Engineering at ISUTC. I am a young person passionate about software development, with tendencies in the areas of artificial intelligence and web security.',
     };
   },
+
   mounted() {
     this.typeWriter('headerText', this.header, 100);
     setTimeout(() => {
@@ -49,6 +50,11 @@ export default {
 @keyframes blink-caret {
   from, to { color: transparent; }
   50% { color: orange; }
+}
+
+h2{
+  font-size: 4.5em;
+  margin-bottom: 1em;
 }
 
 

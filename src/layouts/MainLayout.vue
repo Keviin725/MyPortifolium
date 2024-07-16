@@ -11,7 +11,7 @@
           <q-menu>
             <q-list dense style="min-width: 100px">
               <q-item clickable v-close-popup>
-                <q-item-section>Novo Arquivo de Texto <span class="row justify-end">Crtl + N</span></q-item-section>
+                <q-item-section>Open...</q-item-section>
               </q-item>
               <q-item clickable v-close-popup>
                 <q-item-section>New</q-item-section>
@@ -141,6 +141,11 @@
           </q-menu>
         </div>
 
+        <!-- Campo de entrada no centro -->
+        <div class="q-ml-md search-bar">
+          <q-input dense outlined placeholder="Search..."></q-input>
+        </div>
+
         <!-- Botões à direita -->
         <q-space />
         <q-btn dense flat icon="minimize" />
@@ -227,27 +232,53 @@
       </div>
     </div>
 
-    <!-- Status Bar -->
     <q-footer class="status-bar">
-      <q-bar>
-        <div class="cursor-pointer non-selectable">
-          <q-icon size="16px"><q-img src="/remote.svg"/></q-icon>
-        </div>
-        <div class="cursor-pointer non-selectable">
-          <q-icon size="16px"><q-img src="/git-merge.svg"/></q-icon>
-        </div>
-        <div class="cursor-pointer non-selectable">
-          <span style="font-size: 12px; font-weight: bold">main*</span>
-        </div>
-        <div class="cursor-pointer non-selectable">
-          <q-icon size="16px"><q-img src="/sync.svg"/></q-icon>
-        </div>
-        <q-space />
-        <q-icon size="16px"><q-img src="/bell-dot.svg"/></q-icon>
-      </q-bar>
-    </q-footer>
+  <q-bar>
+    <!-- Grupo da esquerda -->
+    <div class="flex items-center">
+      <div class="cursor-pointer non-selectable q-mr-sm">
+        <q-icon size="16px"><q-img src="/remote.svg" /></q-icon>
+      </div>
+      <div class="cursor-pointer non-selectable q-mr-sm">
+        <q-icon size="16px"><q-img src="/git-merge.svg" /></q-icon>
+      </div>
+      <div class="cursor-pointer non-selectable q-mr-sm">
+        <span style="font-size: 12px; font-weight: bold">main*</span>
+      </div>
+      <div class="cursor-pointer non-selectable q-mr-sm">
+        <q-icon size="16px"><q-img src="/sync.svg" /></q-icon>
+      </div>
+      <div class="cursor-pointer non-selectable q-mr-sm">0</div>
+    </div>
+
+    <q-space />
+
+    <!-- Grupo da direita -->
+    <div class="flex items-center">
+      <div class="cursor-pointer non-selectable q-mr-md">
+        <span style="font-size: 12px; font-weight: bold">Ln 431, Col 122</span>
+      </div>
+      <div class="cursor-pointer non-selectable q-mr-sm">
+        <span style="font-size: 12px; font-weight: bold">Spaces: 2</span>
+      </div>
+      <div class="cursor-pointer non-selectable q-mr-md">
+        <span style="font-size: 12px; font-weight: bold">UTF-8</span>
+      </div>
+      <div class="cursor-pointer non-selectable q-mr-md">
+        <span style="font-size: 12px; font-weight: bold">LF</span>
+      </div>
+      <div class="cursor-pointer non-selectable ">
+        <span style="font-size: 12px; font-weight: bold">Vue</span>
+      </div>
+      <div class="cursor-pointer non-selectable">
+        <q-icon size="16px"><q-img src="/notifications.svg" /></q-icon>
+      </div>
+    </div>
+  </q-bar>
+</q-footer>
   </q-layout>
 </template>
+
 
 <script>
 import { ref } from 'vue'
@@ -264,8 +295,8 @@ export default {
     // Dados dos itens do drawer
     const items = ref([
       { title: 'Explorar', contentType: 'text', content: 'Inbox Content' },
-      { title: 'Star', contentType: 'tree', content: [
-        { label: 'Child 1', icon: 'folder' },
+      { title: 'Pesquisar', contentType: 'tree', content: [
+        { label: 'Controle do Codigo-Fonete', icon: 'folder' },
         { label: 'Child 2', icon: 'folder' },
         // Adicione mais nós conforme necessário
       ] },

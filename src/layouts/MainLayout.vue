@@ -11,7 +11,7 @@
           <q-menu>
             <q-list dense style="min-width: 100px">
               <q-item clickable v-close-popup>
-                <q-item-section>Open...</q-item-section>
+                <q-item-section>Novo Arquivo de Texto <span class="row justify-end">Crtl + N</span></q-item-section>
               </q-item>
               <q-item clickable v-close-popup>
                 <q-item-section>New</q-item-section>
@@ -206,7 +206,7 @@
       </div>
 
       <!-- Main content -->
-      <div class="main-content">
+      <div :class="['main-content', {'drawer-open': additionalDrawers.some(isOpen => isOpen)}]">
         <q-page-container>
           <router-view />
         </q-page-container>
@@ -313,6 +313,11 @@ export default {
   padding: 0;
   flex: 1;
   margin-left: 50px; /* Ajuste para não sobrepor a barra lateral */
+  transition: margin-left 0.3s; /* Transição suave ao abrir o drawer */
+}
+
+.drawer-open {
+  margin-left: 350px; /* Ajuste conforme necessário para empurrar o conteúdo */
 }
 
 .item-with-margin {
@@ -321,9 +326,12 @@ export default {
 
 .item-drawer-container {
   position: fixed;
-  right: 20px;
-  width: 250px;
-  background-color: #1e1e3f;
+  left: 50px;
+  top: 20px;
+  bottom: 0;
+  width: 300px; /* Ajuste conforme necessário */
+  /**background-color: #1e1e3f; */
+  transition: transform 0.3s;
 }
 
 .q-footer {
@@ -358,6 +366,10 @@ export default {
   background-color: #2b213a;
 }
 
+q-menu{
+  width: 250px;
+}
+
 /* Estilos do ItemDrawer */
 .item-drawer {
   position: fixed;
@@ -366,7 +378,6 @@ export default {
   width: 300px;
   height: 100vh;
   background-color: #2b213a;
-
   color: #b6b2b2;
 }
 

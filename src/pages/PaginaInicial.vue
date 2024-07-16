@@ -89,7 +89,7 @@ export default {
 }
 
 .intro-text {
-  max-width: 50%;
+  max-width: 60%;
   flex: 1; /* Garante que o texto ocupe todo o espaço disponível */
 }
 
@@ -130,21 +130,9 @@ export default {
   color: #fff;
   transition: all 0.3s ease;
   margin: 5px;
-  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3),
-              0 0 10px rgba(0, 255, 255, 0.5),
-              0 0 20px rgba(0, 255, 255, 0.2),
-              0 0 40px rgba(0, 255, 255, 0.2);
+
 }
 
-.connect-btn:hover,
-.connect-btn:focus {
-  box-shadow: 0 0 5px rgba(0, 255, 255, 0.75),
-              0 0 10px rgba(0, 255, 255, 0.75),
-              0 0 20px rgba(0, 255, 255, 0.75),
-              0 0 40px rgba(0, 255, 255, 0.75),
-              0 0 80px rgba(0, 255, 255, 0.75);
-  transform: translate(-1px, -1px);
-}
 
 .works-section {
   text-align: center;

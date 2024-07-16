@@ -12,7 +12,7 @@ export default {
       headerText: '',
       paragraphText: '',
       header: 'Software Engineer & Web Security Enthusiast',
-      paragraph: 'My name is Kevin, I am from Maputo and I am attending the 4th year of Computer and Telecommunications Engineering at ISUTC. I am a young person passionate about software development, with tendencies in the areas of artificial intelligence and web security.',
+      paragraph:'I am a young person passionate about software development, with tendencies in the areas of artificial intelligence and web security. I am a curious, creative and determined person. I always seek to improve myself and learn new things.'
     };
   },
 

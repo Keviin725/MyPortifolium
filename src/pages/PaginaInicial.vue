@@ -29,8 +29,8 @@
       <hr>
     </div>
 
+    <h2>Recent works</h2>
     <!---<div class="works-section">
-      <h2>Recent works</h2>
       <div class="filter-buttons">
         <q-btn label="All" class="connect-btn" />
         <q-btn label="Design" class="connect-btn" />

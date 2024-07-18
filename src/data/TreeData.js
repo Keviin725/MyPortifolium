@@ -14,8 +14,7 @@ export const sampleTree = [
           { name: 'IndexPage.vue', icon: 'vue-js', color: '#ff9800' },
           { name: 'AboutPage.vue', icon: 'vue-js', color: '#ff9800' }
         ]
-      },
-
+      }
     ]
   },
   {
@@ -31,8 +30,7 @@ export const sampleTree = [
           { name: 'IndexPage.vue', icon: 'vue-js', color: '#ff9800' },
           { name: 'AboutPage.vue', icon: 'vue-js', color: '#ff9800' }
         ]
-      },
-
+      }
     ]
   },
   {
@@ -48,8 +46,7 @@ export const sampleTree = [
           { name: 'IndexPage.vue', icon: 'vue-js', color: '#ff9800' },
           { name: 'AboutPage.vue', icon: 'vue-js', color: '#ff9800' }
         ]
-      },
-
+      }
     ]
   },
   {
@@ -65,8 +62,7 @@ export const sampleTree = [
           { name: 'IndexPage.vue', icon: 'vue-js', color: '#ff9800' },
           { name: 'AboutPage.vue', icon: 'vue-js', color: '#ff9800' }
         ]
-      },
-
+      }
     ]
   },
   {
@@ -82,8 +78,7 @@ export const sampleTree = [
           { name: 'IndexPage.vue', icon: 'vue-js', color: '#ff9800' },
           { name: 'AboutPage.vue', icon: 'vue-js', color: '#ff9800' }
         ]
-      },
-
+      }
     ]
   },
   {
@@ -132,8 +127,7 @@ export const sampleTree = [
         icon: 'folder-data.png',
         color: '#ff9800',
         children: [
-          { name: 'TreeData.js', icon: 'vue-js', color: '#ff9800' },
-
+          { name: 'TreeData.js', icon: 'vue-js', color: '#ff9800' }
         ]
       },
       {
@@ -141,8 +135,7 @@ export const sampleTree = [
         icon: 'folder-data.png',
         color: '#ff9800',
         children: [
-          { name: 'MainLayout.vue', icon: 'vue-js', color: '#ff9800' },
-
+          { name: 'MainLayout.vue', icon: 'vue-js', color: '#ff9800' }
         ]
       },
       {
@@ -162,9 +155,7 @@ export const sampleTree = [
           { name: 'IndexPage.vue', icon: 'vue-js', color: '#ff9800' },
           { name: 'AboutPage.vue', icon: 'vue-js', color: '#ff9800' }
         ]
-      },
-
-
+      }
     ]
   },
   {
@@ -180,8 +171,7 @@ export const sampleTree = [
           { name: 'IndexPage.vue', icon: 'vue-js', color: '#ff9800' },
           { name: 'AboutPage.vue', icon: 'vue-js', color: '#ff9800' }
         ]
-      },
-
+      }
     ]
   },
   {
@@ -197,8 +187,7 @@ export const sampleTree = [
           { name: 'IndexPage.vue', icon: 'vue-js', color: '#ff9800' },
           { name: 'AboutPage.vue', icon: 'vue-js', color: '#ff9800' }
         ]
-      },
-
+      }
     ]
   },
   {
@@ -214,9 +203,7 @@ export const sampleTree = [
           { name: 'IndexPage.vue', icon: 'vue-js', color: '#ff9800' },
           { name: 'AboutPage.vue', icon: 'vue-js', color: '#ff9800' }
         ]
-      },
-
+      }
     ]
-  },
-
+  }
 ];

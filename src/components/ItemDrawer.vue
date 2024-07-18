@@ -1,30 +1,12 @@
 <template>
   <div v-if="drawer" class="item-drawer">
-    <q-toolbar>
-      <q-toolbar-title>{{ title }}</q-toolbar-title>
-      <q-btn flat dense round icon="close" @click="closeDrawer" />
-    </q-toolbar>
-    <q-scroll-area class="fit">
-      <!-- Lista de itens TreeItem -->
-      <TreeItem
-        v-for="(item, index) in sampleTree"
-        :key="index"
-        :item="item"
-        @item-click="handleItemClick()"
-      />
-    </q-scroll-area>
-
-    <!-- Conteúdo das tabs -->
-    <div v-if="activeItem">
-      <q-tabs v-model="activeTab">
-        <q-tab v-for="(tab, tabIndex) in activeItem.content" :key="tabIndex" :label="tab.label" />
-      </q-tabs>
-      <q-tab-panels v-model="activeTab">
-        <q-tab-panel v-for="(tab, tabIndex) in activeItem.content" :key="tabIndex">
-          {{ tab.content }}
-        </q-tab-panel>
-      </q-tab-panels>
-    </div>
+    <!-- Conteúdo do drawer -->
+    <TreeItem
+      v-for="(item, index) in sampleTree"
+      :key="index"
+      :item="item"
+      @item-click="handleItemClick"
+    />
   </div>
 </template>
 
@@ -34,16 +16,13 @@ import { sampleTree } from '../data/TreeData';
 
 export default {
   props: {
-    value: Boolean,
-    title: String
+    value: Boolean
   },
-  emits: ['update:drawer'],
+  emits: ['update:drawer', 'open-tab'],
   data() {
     return {
       drawer: this.value,
-      sampleTree: sampleTree, // Utiliza os dados importados
-      activeItem: null, // Item ativo para exibir as tabs
-      activeTab: 0 // Índice da tab ativa
+      sampleTree: sampleTree, // Dados de exemplo importados
     };
   },
   watch: {
@@ -55,13 +34,13 @@ export default {
     }
   },
   methods: {
-    closeDrawer() {
-      this.drawer = false;
-      this.$emit('update:drawer', false);
-    },
-    handleItemClick(item) {
-      if (item.content && item.content.length > 0) {
-        this.activeItem = item;
+    handleItemClick(payload) {
+      if (payload.action === 'open-tab') {
+        // Lógica para abrir uma nova aba com base no item clicado
+        const item = payload.item;
+        console.log('Abrir aba para:', item);
+        // Emitir evento para o componente pai abrir uma nova aba
+        this.$emit('open-tab', item);
       }
     }
   },

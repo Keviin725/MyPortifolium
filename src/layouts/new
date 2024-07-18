@@ -213,224 +213,213 @@
       <!-- Main content -->
       <div :class="['main-content', {'drawer-open': additionalDrawers.some(isOpen => isOpen)}]">
         <q-page-container>
-          <router-view />
+          <div>
+            <!-- Tabs container -->
+            <div class="tabs-container">
+              <q-tabs
+                v-model="selectedTab"
+                align="left"
+                class="text-teal"
+                active-color="teal-10"
+                indicator-color="teal"
+              >
+                <q-tab v-for="tab in tabs" :key="tab.name" :name="tab.name" :label="tab.title" />
+              </q-tabs>
+            </div>
+
+            <!-- Tabs content -->
+            <div class="tabs-content">
+              <Tab
+                v-for="tab in tabs"
+                :key="tab.name"
+                v-show="selectedTab === tab.name"
+                :title="tab.title"
+                :content="tab.content"
+              />
+            </div>
+          </div>
         </q-page-container>
       </div>
 
-      <!-- Container para os drawers adicionais -->
+      <!-- Drawer container -->
       <div class="item-drawer-container">
         <ItemDrawer
-        v-for="(item, index) in items"
-        :key="index"
-        :value="additionalDrawers[index]"
-        @update:drawer="value => additionalDrawers[index] = value"
-        :title="item.title"
-        :contentType="item.contentType"
-        :content="item.content"
-        @open-tab="handleOpenTab"
-      />
+          v-for="(item, index) in items"
+          :key="index"
+          v-show="additionalDrawers[index]"
+          :title="item.title"
+          :content="item.content"
+        />
       </div>
     </div>
 
-    <q-footer class="status-bar">
-  <q-bar>
-    <!-- Grupo da esquerda -->
-    <div class="flex items-center">
-      <div class="cursor-pointer non-selectable q-mr-sm">
-        <q-icon size="16px"><q-img src="/remote.svg" /></q-icon>
-      </div>
-      <div class="cursor-pointer non-selectable q-mr-sm">
-        <q-icon size="16px"><q-img src="/git-merge.svg" /></q-icon>
-      </div>
-      <div class="cursor-pointer non-selectable q-mr-sm">
-        <span style="font-size: 12px; font-weight: bold">main*</span>
-      </div>
-      <div class="cursor-pointer non-selectable q-mr-sm">
-        <q-icon size="16px"><q-img src="/sync.svg" /></q-icon>
-      </div>
-      <div class="cursor-pointer non-selectable q-mr-sm">0</div>
-    </div>
+    <!-- Footer -->
+    <q-footer class="status-bar" elevated>
+      <q-bar class="status-bar">
+        <!-- Grupo da esquerda -->
+        <div class="flex items-center">
+          <div class="cursor-pointer non-selectable q-mr-sm">
+            <span style="font-size: 12px; font-weight: 400">master*</span>
+          </div>
+          <div class="cursor-pointer non-selectable q-mr-sm">
+            <span style="font-size: 12px; font-weight: 400">Linux</span>
+          </div>
+        </div>
 
-    <q-space />
+        <q-space />
 
-    <!-- Grupo da direita -->
-    <div class="flex items-center">
-      <div class="cursor-pointer non-selectable q-mr-md">
-        <span style="font-size: 12px; font-weight: bold">Ln 431, Col 122</span>
-      </div>
-      <div class="cursor-pointer non-selectable q-mr-sm">
-        <span style="font-size: 12px; font-weight: bold">Spaces: 2</span>
-      </div>
-      <div class="cursor-pointer non-selectable q-mr-md">
-        <span style="font-size: 12px; font-weight: bold">UTF-8</span>
-      </div>
-      <div class="cursor-pointer non-selectable q-mr-md">
-        <span style="font-size: 12px; font-weight: bold">LF</span>
-      </div>
-      <div class="cursor-pointer non-selectable ">
-        <span style="font-size: 12px; font-weight: bold">Vue</span>
-      </div>
-      <div class="cursor-pointer non-selectable">
-        <q-icon size="16px"><q-img src="/notifications.svg" /></q-icon>
-      </div>
-    </div>
-  </q-bar>
-</q-footer>
+        <!-- Grupo do centro -->
+        <div class="flex items-center cursor-pointer non-selectable q-mr-sm">
+          <q-icon size="16px">
+            <q-img src="/beaker.svg" />
+          </q-icon>
+          <span style="font-size: 12px; font-weight: 400">Experimental Features</span>
+        </div>
+
+        <q-space />
+
+        <!-- Grupo da direita -->
+        <div class="flex items-center cursor-pointer non-selectable q-mr-sm">
+          <span style="font-size: 12px; font-weight: 400">Spaces: 2</span>
+        </div>
+        <div class="flex items-center cursor-pointer non-selectable q-mr-sm">
+          <span style="font-size: 12px; font-weight: 400">UTF-8</span>
+        </div>
+        <div class="flex items-center cursor-pointer non-selectable q-mr-sm">
+          <span style="font-size: 12px; font-weight: 400">LF</span>
+        </div>
+        <div class="flex items-center cursor-pointer non-selectable q-mr-sm">
+          <span style="font-size: 12px; font-weight: 400">TypeScript</span>
+        </div>
+      </q-bar>
+    </q-footer>
   </q-layout>
 </template>
 
-
 <script>
-import { ref } from 'vue'
-import ItemDrawer from '../components/ItemDrawer.vue'
+import { ref } from 'vue';
+import ItemDrawer from '../components/ItemDrawer.vue';
+import Tab from '../components/Tab.vue';
 
 export default {
+  name: 'MainLayout',
   components: {
-    ItemDrawer
+    ItemDrawer,
+    Tab,
   },
   setup() {
-    // Estado para controlar os drawers adicionais
-    const additionalDrawers = ref([false, false, false, false])
+    const items = [
+      { title: 'Drawer 1', contentType: 'text', content: 'Content for Drawer 1' },
+      { title: 'Drawer 2', contentType: 'text', content: 'Content for Drawer 2' },
+      { title: 'Drawer 3', contentType: 'text', content: 'Content for Drawer 3' },
+    ];
+    const additionalDrawers = ref(Array(items.length).fill(false));
+    const tabs = ref([]);
+    const selectedTab = ref(null);
 
-    // Dados dos itens do drawer
-    const items = ref([
-      { title: 'Explorar', contentType: 'text', content: 'Inbox Content' },
-      { title: 'Pesquisar', contentType: 'tree', content: [
-        { label: 'Controle do Codigo-Fonete', icon: 'folder' },
-        { label: 'Child 2', icon: 'folder' },
-        // Adicione mais nós conforme necessário
-      ] },
-      // Adicione mais itens conforme necessário
-    ]);
-
-    function handleItemClick(index, node) {
-      additionalDrawers.value = additionalDrawers.value.map((_, i) => i === index ? !additionalDrawers.value[i] : false);
-      // Lógica adicional ao clicar em um item da árvore, se necessário
-    }
+    const handleItemClick = (index) => {
+      additionalDrawers.value = additionalDrawers.value.map((isOpen, i) => i === index);
+      const tabName = `tab-${index}`;
+      if (!tabs.value.some(tab => tab.name === tabName)) {
+        tabs.value.push({
+          name: tabName,
+          title: `Tab ${index + 1}`,
+          content: `Content for Tab ${index + 1}`,
+        });
+      }
+      selectedTab.value = tabName;
+    };
 
     return {
+      items,
       additionalDrawers,
       handleItemClick,
-      items,
-      activeTabs: []
-    }
+      tabs,
+      selectedTab,
+    };
   },
-  methods:{
-    handleOpenTab(item) {
-      // Adicionar lógica para abrir uma nova tab com base no item clicado
-      console.log('Abrir tab para:', item);
-      // Exemplo: adicionar o item a uma lista de tabs ativas
-      this.activeTabs.push(item);
-      console.log('Tabs ativas:', this.activeTabs);
-      // Aqui você pode implementar a lógica específica para abrir uma nova tab no layout principal
-    }
-  }
-}
+};
 </script>
 
-<style scoped>
-/* Estilos do layout */
+<style>
+/* Define aqui os estilos CSS */
+
+.header-bar {
+  height: 30px;
+  background-color: #1e1e1e;
+  padding: 0 8px;
+  color: white;
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
 .layout {
   display: flex;
-  flex-direction: row;
-  height: 100vh; /* Ajuste com base na altura do cabeçalho */
-  position: relative;
+  height: calc(100vh - 30px);
 }
 
 .sidebar {
+  width: 60px;
+  background-color: #252526;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50px;
-  position: fixed;
-  left: 0;
-  top: 20px;
-  bottom: 0;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  background-color: #0a0a14;
 }
 
-.main-content {
-  padding: 0;
-  flex: 1;
-  margin-left: 50px; /* Ajuste para não sobrepor a barra lateral */
-  transition: margin-left 0.3s; /* Transição suave ao abrir o drawer */
+.full-height {
+  height: 100%;
 }
 
-.drawer-open {
-  margin-left: 350px; /* Ajuste conforme necessário para empurrar o conteúdo */
+.item-section {
+  padding: 10px;
 }
 
 .item-with-margin {
-  margin-top: 150px; /* Ajuste conforme necessário para garantir visibilidade */
+  margin-top: auto;
+}
+
+.main-content {
+  flex: 1;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.drawer-open {
+  width: calc(100% - 300px); /* Adjust the value to the total width of the drawers */
 }
 
 .item-drawer-container {
-  position: fixed;
-  left: 50px;
-  top: 20px;
+  position: absolute;
+  top: 30px;
   bottom: 0;
-  width: 300px; /* Ajuste conforme necessário */
-  /**background-color: #1e1e3f; */
-  transition: transform 0.3s;
-}
-
-.q-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
   right: 0;
-  /* Garante que o rodapé não sobreponha conteúdo importante */
+  display: flex;
 }
 
 .status-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #2b213a;
-  color: #b6b2b2;
+  background-color: #007acc;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
 }
 
-.q-bar--standard {
-  padding: 0;
-  height: 24px;
+.status-bar div {
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
 }
 
-.header-bar {
-  background-color: #2b213a;
-  color: #b6b2b2;
+.tabs-container {
+  background: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
 }
 
-.q-menu .q-item {
-  color: #b6b2b2;
-  background-color: #2b213a;
-}
-
-q-menu{
-  width: 250px;
-}
-
-/* Estilos do ItemDrawer */
-.item-drawer {
-  position: fixed;
-  top: 20px;
-  left: 50px;
-  width: 300px;
-  height: 100vh;
-  background-color: #2b213a;
-  color: #b6b2b2;
-}
-
-.item-drawer .q-scroll-area {
-  background-color: #2a2139;
-}
-
-.cursor-pointer.non-selectable {
-  font-size: 14px;
-}
-.main-content .q-page-container {
-  padding: 0;
+.tabs-content {
+  padding: 16px;
 }
 </style>

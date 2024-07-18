@@ -6,7 +6,12 @@
       <q-icon v-if="item.children && item.children.length > 0" :name="showChildren ? 'keyboard_arrow_down' : 'keyboard_arrow_right'" />
     </div>
     <div v-if="showChildren && item.children && item.children.length > 0" class="children">
-      <TreeItem v-for="(child, index) in item.children" :key="index" :item="child" @item-click="handleChildClick(child)" />
+      <TreeItem
+        v-for="(child, index) in item.children"
+        :key="index"
+        :item="child"
+        @item-click="handleChildClick(child)"
+      />
     </div>
   </div>
 </template>
@@ -29,11 +34,11 @@ export default {
       if (this.item.children && this.item.children.length > 0) {
         this.showChildren = !this.showChildren;
       } else {
-        this.$emit('item-click', this.item);
+        this.$emit('item-click', { action: 'open-tab', item: this.item });
       }
     },
     handleChildClick(child) {
-      this.$emit('item-click', child);
+      this.$emit('item-click', { action: 'open-tab', item: child });
     },
     getIconPath(icon) {
       const basePath = '/';

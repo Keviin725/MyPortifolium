@@ -10,7 +10,7 @@
         v-for="(item, index) in sampleTree"
         :key="index"
         :item="item"
-        @item-click="handleItemClick"
+        @item-click="handleItemClick()"
       />
     </q-scroll-area>
 

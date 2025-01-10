@@ -8,7 +8,7 @@
       />
     </div>
     <div class="intro-image">
-      <q-img src="perfil.jpg" alt="Portfolio Designs" class="intro-img-effect" />
+      <!---<q-img src="perfil.jpg" alt="Portfolio Designs" class="intro-img-effect" />-->
     </div>
   </div>
     <div class="center-container">
@@ -31,35 +31,32 @@
 
 
     <div class="works-section">
-      <h2>Recent works</h2>
+  <h2>Recent works</h2>
 
-        <q-btn label="All" class="connect-btn"/>
-        <q-btn label="Design" class="connect-btn"/>
-        <q-btn label="Frontend" class="connect-btn"/>
-        <q-btn label="Backend" class="connect-btn"/>
-        <q-btn label="Mobile" class="connect-btn"/>
+  <q-btn label="All" class="connect-btn" />
+  <q-btn label="Design" class="connect-btn" />
+  <q-btn label="Frontend" class="connect-btn" />
+  <q-btn label="Backend" class="connect-btn" />
+  <q-btn label="Mobile" class="connect-btn" />
 
-      <div class="works q-pa-md">
-        <q-card class="work-card">
-          <q-card-section>
-            <q-img src="1.png" alt="Work 1" />
-            <p>Elegant Portfolio Website</p>
-          </q-card-section>
-        </q-card>
-        <q-card class="work-card">
-          <q-card-section>
-            <q-img src="2.png" alt="Work 2" />
-            <p>Software Engineer</p>
-          </q-card-section>
-        </q-card>
-        <q-card class="work-card">
-          <q-card-section>
-            <q-img src="3.png" alt="Work 3" />
-            <p>App Development</p>
-          </q-card-section>
-        </q-card>
-      </div>
-    </div>
+  <div class="works q-pa-md">
+    <q-carousel navigation-arrows infinite autoplay>
+      <q-carousel-slide name="work1" class="work-slide">
+        <q-img src="1.png" alt="Work 1" />
+        <p>Elegant Portfolio Website</p>
+      </q-carousel-slide>
+      <q-carousel-slide name="work2" class="work-slide">
+        <q-img src="2.png" alt="Work 2" />
+        <p>Software Engineer</p>
+      </q-carousel-slide>
+      <q-carousel-slide name="work3" class="work-slide">
+        <q-img src="3.png" alt="Work 3" />
+        <p>App Development</p>
+      </q-carousel-slide>
+    </q-carousel>
+  </div>
+</div>
+
 
 
   </q-page>

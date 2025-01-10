@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <div class="intro-section">
+    <section class="intro-section">
       <div class="intro-text">
         <typewriter
           :header="'Meet Kevin Machava, Software Engineer'"
@@ -8,85 +8,81 @@
         />
       </div>
       <div class="intro-image">
-        <q-img src="perfil.jpg" alt="Portfolio Designs" class="intro-img-effect" />
+        <!--<q-img src="perfil.jpg" alt="Portfolio Designs" class="intro-img-effect" />-->
       </div>
-    </div>
+    </section>
 
-    <div class="center-container">
-      <hr>
+    <section class="center-container">
+      <hr />
       <div class="tech-buttons">
-        <q-btn icon="fab fa-java" label="Java" class="connect-btn" />
-        <q-btn icon="fab fa-js" label="JavaScript" class="connect-btn" />
-        <q-btn icon="fab fa-vuejs" label="VueJS" class="connect-btn" />
-        <q-btn icon="fab fa-node-js" label="NodeJs" class="connect-btn" />
-        <q-btn icon="fab fa-python" label="Python" class="connect-btn" />
-        <q-btn icon="fab fa-laravel" label="Laravel" class="connect-btn" />
-        <q-btn icon="fab fa-github" label="GitHub" class="connect-btn" />
-        <q-btn icon="fab fa-php" label="PHP" class="connect-btn" />
-        <q-btn icon="fab fa-css3-alt" label="CSS" class="connect-btn" />
-        <q-btn icon="fab fa-html5" label="HTML" class="connect-btn" />
+        <q-btn v-for="tech in techs" :key="tech.label" :icon="tech.icon" :label="tech.label" class="connect-btn" />
       </div>
-      <hr>
-    </div>
+      <hr />
+    </section>
 
-    <h2 class="section-title">Recent works</h2>
-    <div class="works-section">
-      <div class="filter-buttons">
-        <q-btn label="All" class="connect-btn filter-btn" />
-        <q-btn label="Design" class="connect-btn filter-btn" />
-        <q-btn label="Frontend" class="connect-btn filter-btn" />
-        <q-btn label="Backend" class="connect-btn filter-btn" />
-        <q-btn label="Mobile" class="connect-btn filter-btn" />
+    <section>
+      <h2 class="section-title">Recent Works</h2>
+      <div class="works-section">
+        <swiper
+          :slides-per-view="4"
+          space-between="20"
+          navigation
+          :loop="true"
+          :breakpoints="{
+            480: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 4 }
+          }"
+          class="swiper-container"
+        >
+          <swiper-slide v-for="(work, index) in works" :key="index" class="work-card">
+            <q-card>
+              <q-card-section>
+                <q-img :src="work.img" :alt="work.title" class="work-img" />
+                <p class="work-title">{{ work.title }}</p>
+              </q-card-section>
+            </q-card>
+          </swiper-slide>
+        </swiper>
       </div>
-      <div class="works q-pa-md">
-        <q-card class="work-card">
-          <q-card-section>
-            <q-img src="1.png" alt="Work 1" class="work-img" />
-            <p class="work-title">Elegant Portfolio Website</p>
-          </q-card-section>
-        </q-card>
-        <q-card class="work-card">
-          <q-card-section>
-            <q-img src="2.png" alt="Work 2" class="work-img" />
-            <p class="work-title">Software Engineer</p>
-          </q-card-section>
-        </q-card>
-        <q-card class="work-card">
-          <q-card-section>
-            <q-img src="3.png" alt="Work 3" class="work-img" />
-            <p class="work-title">App Development</p>
-          </q-card-section>
-        </q-card>
-        <q-card class="work-card">
-          <q-card-section>
-            <q-img src="4.png" alt="Work 4" class="work-img" />
-            <p class="work-title">Web App Showcase</p>
-          </q-card-section>
-        </q-card>
-        <q-card class="work-card">
-          <q-card-section>
-            <q-img src="5.png" alt="Work 5" class="work-img" />
-            <p class="work-title">Code Showcase Platform</p>
-          </q-card-section>
-        </q-card>
-        <q-card class="work-card">
-          <q-card-section>
-            <q-img src="6.png" alt="Work 6" class="work-img" />
-            <p class="work-title">The Authors</p>
-          </q-card-section>
-        </q-card>
-      </div>
-    </div>
+    </section>
   </q-page>
 </template>
 
 <script>
 import Typewriter from './Typewriter.vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper-bundle.css';
 
 export default {
   name: 'IndexPage',
   components: {
-    Typewriter
+    Typewriter,
+    Swiper,
+    SwiperSlide
+  },
+  data() {
+    return {
+      techs: [
+        { icon: 'fab fa-java', label: 'Java' },
+        { icon: 'fab fa-js', label: 'JavaScript' },
+        { icon: 'fab fa-vuejs', label: 'VueJS' },
+        { icon: 'fab fa-node-js', label: 'NodeJs' },
+        { icon: 'fab fa-python', label: 'Python' },
+        { icon: 'fab fa-laravel', label: 'Laravel' },
+        { icon: 'fab fa-github', label: 'GitHub' },
+        { icon: 'fab fa-php', label: 'PHP' },
+        { icon: 'fab fa-css3-alt', label: 'CSS' },
+        { icon: 'fab fa-html5', label: 'HTML' },
+      ],
+      works: [
+        { img: '1.png', title: 'Elegant Portfolio Website' },
+        { img: '1.png', title: 'Elegant Portfolio Website' },
+        { img: '1.png', title: 'Elegant Portfolio Website' },
+        { img: '1.png', title: 'Elegant Portfolio Website' },
+        { img: '1.png', title: 'Elegant Portfolio Website' },
+      ],
+    }
   }
 }
 </script>
@@ -159,28 +155,21 @@ export default {
 .works-section {
   text-align: center;
   margin-bottom: 2em;
-}
-
-.filter-buttons {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 1em;
 }
 
-
-
-.works {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+.swiper-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .work-card {
-  width: 300px;
+  text-align: center;
   background-color: #444;
   color: white;
+  border-radius: 10px;
 }
 
 .work-img {
@@ -193,5 +182,10 @@ export default {
 .work-title {
   font-size: 1.2em;
   margin-top: 0.5em;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
 }
 </style>

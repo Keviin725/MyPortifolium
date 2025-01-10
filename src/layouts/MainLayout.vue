@@ -3,154 +3,157 @@
     <!-- Header -->
     <q-header>
       <q-bar class="header-bar">
-        <q-icon>
-          <q-img src="/vs-code.svg" />
-        </q-icon>
-        <div class="cursor-pointer non-selectable">
-          Arquivo
-          <q-menu>
-            <q-list dense style="min-width: 100px">
-              <q-item clickable v-close-popup>
-                <q-item-section>Open...</q-item-section>
-              </q-item>
-              <q-item clickable v-close-popup>
-                <q-item-section>New</q-item-section>
-              </q-item>
+        <div class="left-section">
+          <q-icon>
+            <q-img src="/vs-code.svg" />
+          </q-icon>
+          <div class="menu-item cursor-pointer non-selectable">
+            Arquivo
+            <q-menu>
+              <q-list dense style="min-width: 100px">
+                <q-item clickable v-close-popup>
+                  <q-item-section>Open...</q-item-section>
+                </q-item>
+                <q-item clickable v-close-popup>
+                  <q-item-section>New</q-item-section>
+                </q-item>
 
-              <q-separator />
+                <q-separator />
 
-              <q-item clickable>
-                <q-item-section>Preferences</q-item-section>
-                <q-item-section side>
-                  <q-icon name="keyboard_arrow_right" />
-                </q-item-section>
+                <q-item clickable>
+                  <q-item-section>Preferences</q-item-section>
+                  <q-item-section side>
+                    <q-icon name="keyboard_arrow_right" />
+                  </q-item-section>
 
-                <q-menu anchor="top end" self="top start">
-                  <q-list>
-                    <q-item v-for="n in 3" :key="n" dense clickable>
-                      <q-item-section>Submenu Label</q-item-section>
-                      <q-item-section side>
-                        <q-icon name="keyboard_arrow_right" />
-                      </q-item-section>
-                      <q-menu auto-close anchor="top end" self="top start">
-                        <q-list>
-                          <q-item v-for="n in 3" :key="n" dense clickable>
-                            <q-item-section>3rd level Label</q-item-section>
-                          </q-item>
-                        </q-list>
-                      </q-menu>
-                    </q-item>
-                  </q-list>
-                </q-menu>
-              </q-item>
+                  <q-menu anchor="top end" self="top start">
+                    <q-list>
+                      <q-item v-for="n in 3" :key="n" dense clickable>
+                        <q-item-section>Submenu Label</q-item-section>
+                        <q-item-section side>
+                          <q-icon name="keyboard_arrow_right" />
+                        </q-item-section>
+                        <q-menu auto-close anchor="top end" self="top start">
+                          <q-list>
+                            <q-item v-for="n in 3" :key="n" dense clickable>
+                              <q-item-section>3rd level Label</q-item-section>
+                            </q-item>
+                          </q-list>
+                        </q-menu>
+                      </q-item>
+                    </q-list>
+                  </q-menu>
+                </q-item>
 
-              <q-separator />
+                <q-separator />
 
-              <q-item clickable v-close-popup>
-                <q-item-section>Quit</q-item-section>
-              </q-item>
-            </q-list>
-          </q-menu>
-        </div>
+                <q-item clickable v-close-popup>
+                  <q-item-section>Quit</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </div>
 
-        <!-- Editar -->
-        <div class="q-ml-md cursor-pointer non-selectable">
-          Editar
-          <q-menu auto-close>
-            <q-list dense style="min-width: 100px">
-              <q-item clickable>
-                <q-item-section>Cut</q-item-section>
-              </q-item>
-              <q-item clickable>
-                <q-item-section>Copy</q-item-section>
-              </q-item>
-              <q-item clickable>
-                <q-item-section>Paste</q-item-section>
-              </q-item>
-              <q-separator />
-              <q-item clickable>
-                <q-item-section>Select All</q-item-section>
-              </q-item>
-            </q-list>
-          </q-menu>
-        </div>
+          <!-- Editar -->
+          <div class="menu-item q-ml-md cursor-pointer non-selectable">
+            Editar
+            <q-menu auto-close>
+              <q-list dense style="min-width: 100px">
+                <q-item clickable>
+                  <q-item-section>Cut</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Copy</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Paste</q-item-section>
+                </q-item>
+                <q-separator />
+                <q-item clickable>
+                  <q-item-section>Select All</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </div>
 
-        <!-- Selecao -->
-        <div class="q-ml-md cursor-pointer non-selectable">
-          Selecao
-          <q-menu auto-close>
-            <q-list dense style="min-width: 100px">
-              <q-item clickable>
-                <q-item-section>Cut</q-item-section>
-              </q-item>
-              <q-item clickable>
-                <q-item-section>Copy</q-item-section>
-              </q-item>
-              <q-item clickable>
-                <q-item-section>Paste</q-item-section>
-              </q-item>
-              <q-separator />
-              <q-item clickable>
-                <q-item-section>Select All</q-item-section>
-              </q-item>
-            </q-list>
-          </q-menu>
-        </div>
+          <!-- Selecao -->
+          <div class="menu-item q-ml-md cursor-pointer non-selectable">
+            Selecao
+            <q-menu auto-close>
+              <q-list dense style="min-width: 100px">
+                <q-item clickable>
+                  <q-item-section>Cut</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Copy</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Paste</q-item-section>
+                </q-item>
+                <q-separator />
+                <q-item clickable>
+                  <q-item-section>Select All</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </div>
 
-        <!-- Ver -->
-        <div class="q-ml-md cursor-pointer non-selectable">
-          Ver
-          <q-menu auto-close>
-            <q-list dense style="min-width: 100px">
-              <q-item clickable>
-                <q-item-section>Cut</q-item-section>
-              </q-item>
-              <q-item clickable>
-                <q-item-section>Copy</q-item-section>
-              </q-item>
-              <q-item clickable>
-                <q-item-section>Paste</q-item-section>
-              </q-item>
-              <q-separator />
-              <q-item clickable>
-                <q-item-section>Select All</q-item-section>
-              </q-item>
-            </q-list>
-          </q-menu>
-        </div>
+          <!-- Ver -->
+          <div class="menu-item q-ml-md cursor-pointer non-selectable">
+            Ver
+            <q-menu auto-close>
+              <q-list dense style="min-width: 100px">
+                <q-item clickable>
+                  <q-item-section>Cut</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Copy</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Paste</q-item-section>
+                </q-item>
+                <q-separator />
+                <q-item clickable>
+                  <q-item-section>Select All</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </div>
 
-        <!-- Acessar -->
-        <div class="q-ml-md cursor-pointer non-selectable">
-          Acessar
-          <q-menu auto-close>
-            <q-list dense style="min-width: 100px">
-              <q-item clickable>
-                <q-item-section>Cut</q-item-section>
-              </q-item>
-              <q-item clickable>
-                <q-item-section>Copy</q-item-section>
-              </q-item>
-              <q-item clickable>
-                <q-item-section>Paste</q-item-section>
-              </q-item>
-              <q-separator />
-              <q-item clickable>
-                <q-item-section>Select All</q-item-section>
-              </q-item>
-            </q-list>
-          </q-menu>
+          <!-- Acessar -->
+          <div class="menu-item q-ml-md cursor-pointer non-selectable">
+            Acessar
+            <q-menu auto-close>
+              <q-list dense style="min-width: 100px">
+                <q-item clickable>
+                  <q-item-section>Cut</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Copy</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Paste</q-item-section>
+                </q-item>
+                <q-separator />
+                <q-item clickable>
+                  <q-item-section>Select All</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </div>
         </div>
 
         <!-- Campo de entrada no centro -->
-        <div class="q-ml-md search-bar">
-          <q-input dense outlined placeholder="Search..."></q-input>
+        <div class="center-section">
+          <q-input dense outlined  placeholder="Search..." style="width: 50%; border: 1px solid; border-radius: 10px;"></q-input>
         </div>
 
         <!-- Botões à direita -->
-        <q-space />
-        <q-btn dense flat icon="minimize" />
-        <q-btn dense flat icon="crop_square" />
-        <q-btn dense flat icon="close" />
+        <div class="right-section">
+          <q-btn dense flat icon="minimize" />
+          <q-btn dense flat icon="crop_square" />
+          <q-btn dense flat icon="close" />
+        </div>
       </q-bar>
     </q-header>
 
@@ -158,7 +161,7 @@
     <div class="layout">
       <div class="sidebar full-height">
         <q-list padding>
-          <q-item clickable v-ripple @click="handleItemClick(0)">
+          <q-item clickable v-ripple @click="handleItemClick(0, 'Home')">
             <q-item-section avatar class="q-pa-sm item-section">
               <q-icon size="30px">
                 <q-img src="/files.svg" />
@@ -220,15 +223,15 @@
       <!-- Container para os drawers adicionais -->
       <div class="item-drawer-container">
         <ItemDrawer
-        v-for="(item, index) in items"
-        :key="index"
-        :value="additionalDrawers[index]"
-        @update:drawer="value => additionalDrawers[index] = value"
-        :title="item.title"
-        :contentType="item.contentType"
-        :content="item.content"
-        @open-tab="handleOpenTab"
-      />
+          v-for="(item, index) in items"
+          :key="index"
+          :value="additionalDrawers[index]"
+          @update:drawer="value => additionalDrawers[index] = value"
+          :title="item.title"
+          :contentType="item.contentType"
+          :content="item.content"
+          @open-tab="handleOpenTab"
+        />
       </div>
     </div>
 
@@ -283,12 +286,14 @@
 <script>
 import { ref } from 'vue'
 import ItemDrawer from '../components/ItemDrawer.vue'
+import { useRouter } from 'vue-router'
 
 export default {
   components: {
     ItemDrawer
   },
   setup() {
+    const router = useRouter()
     // Estado para controlar os drawers adicionais
     const additionalDrawers = ref([false, false, false, false])
 
@@ -303,27 +308,46 @@ export default {
       // Adicione mais itens conforme necessário
     ]);
 
-    function handleItemClick(index, node) {
-      additionalDrawers.value = additionalDrawers.value.map((_, i) => i === index ? !additionalDrawers.value[i] : false);
-      // Lógica adicional ao clicar em um item da árvore, se necessário
+    function handleItemClick(index, routeName) {
+      additionalDrawers.value = additionalDrawers.value.map((_, i) => i === index ? !additionalDrawers.value[i] : false)
+      handleOpenTab(routeName)
+    }
+
+    function handleOpenTab(routeName) {
+      const route = { name: routeName }
+      router.push(route)
     }
 
     return {
       additionalDrawers,
       handleItemClick,
       items,
-      activeTabs: []
+      tabsAtivas: []
     }
   },
   methods:{
-    handleOpenTab(item) {
-      // Adicionar lógica para abrir uma nova tab com base no item clicado
-      console.log('Abrir tab para:', item);
-      // Exemplo: adicionar o item a uma lista de tabs ativas
-      this.activeTabs.push(item);
-      console.log('Tabs ativas:', this.activeTabs);
-      // Aqui você pode implementar a lógica específica para abrir uma nova tab no layout principal
-    }
+  handleClickOnChild(child) {
+  console.log('Clicado no child:', child.name);
+  abrirTab(child);
+},
+
+abrirTab(child) {
+  // Verifica se a tab já está aberta
+  const isTabAlreadyOpen = tabsAtivas.some(tab => tab.name === child.name);
+  if (!isTabAlreadyOpen) {
+    // Adiciona a nova tab à lista de tabs ativas
+    tabsAtivas.push({
+      name: child.name,
+      icon: child.icon,
+      color: child.color,
+      children: child.children,
+    });
+    // Atualiza a UI aqui, se necessário
+    console.log('Tab aberta:', child.name);
+  } else {
+    console.log('Tab já está aberta:', child.name);
+  }
+}
   }
 }
 </script>
@@ -359,11 +383,11 @@ export default {
 }
 
 .drawer-open {
-  margin-left: 350px; /* Ajuste conforme necessário para empurrar o conteúdo */
+  margin-left: 350px;
 }
 
 .item-with-margin {
-  margin-top: 150px; /* Ajuste conforme necessário para garantir visibilidade */
+  margin-top: 150px;
 }
 
 .item-drawer-container {
@@ -371,7 +395,7 @@ export default {
   left: 50px;
   top: 20px;
   bottom: 0;
-  width: 300px; /* Ajuste conforme necessário */
+  width: 300px;
   /**background-color: #1e1e3f; */
   transition: transform 0.3s;
 }
@@ -401,6 +425,30 @@ export default {
 .header-bar {
   background-color: #2b213a;
   color: #b6b2b2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item {
+  margin-left: 1rem;
+}
+
+.center-section {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
 }
 
 .q-menu .q-item {

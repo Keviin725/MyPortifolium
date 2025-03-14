@@ -8,7 +8,7 @@
         />
       </div>
       <div class="intro-image">
-        <!--<q-img src="perfil.jpg" alt="Portfolio Designs" class="intro-img-effect" />-->
+        <q-img src="perfil.jpg" alt="Portfolio Designs" class="intro-img-effect" />
       </div>
     </section>
 
@@ -105,6 +105,8 @@ export default {
 .intro-text {
   max-width: 50%;
   flex: 1;
+  height: 600px; /* Defina uma altura fixa */
+  overflow: hidden; /* Esconde o texto que ultrapassa a altura */
 }
 
 .intro-image {
